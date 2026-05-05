@@ -1,0 +1,10 @@
+source,target,vulnerability_score
+Public Web Server,Phishing Email Gateway,2
+Public Web Server,Employee Laptop,4
+Phishing Email Gateway,Employee Laptop,1
+Employee Laptop,Internal Firewall,5
+Employee Laptop,Admin Terminal,7
+Internal Firewall,Admin Terminal,3
+Internal Firewall,Main Database,8
+Admin Terminal,Main Database,2
+Phishing Email Gateway,Internal Firewall,6
