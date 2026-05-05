@@ -47,7 +47,7 @@ print("=" * 55)
 
 # ── Save Results to File ───────────────────────────────────────────────────────
 os.makedirs("results", exist_ok=True)
-with open("results/solution_output.txt", "w") as f:
+with open("results/solution_output.txt", "w", encoding="utf-8") as f:
     f.write("CYBERSECURITY ATTACK-PATH ANALYSIS\n")
     f.write("=" * 55 + "\n")
     f.write(f"Entry Point : {source_node}\n")
@@ -76,7 +76,7 @@ for node in G.nodes():
     else:
         node_colors.append("#95a5a6")
 
-plt.figure(figsize=(13, 8))
+plt.figure(figsize=(16, 10))
 plt.title(
     "Cybersecurity Attack-Path Analysis\n"
     "Shortest Path = Path of Least Resistance (Lowest Vulnerability Score)",
@@ -87,12 +87,16 @@ nx.draw_networkx_edges(G, pos, edge_color="lightgrey", arrows=True,
                        arrowsize=20, width=2)
 nx.draw_networkx_edges(G, pos, edgelist=path_edges, edge_color="red",
                        arrows=True, arrowsize=25, width=3)
-nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=2500)
-nx.draw_networkx_labels(G, pos, font_size=8, font_color="white",
-                        font_weight="bold")
+nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=4500)
+
+# Wrap long node labels
+import textwrap
+wrapped_labels = {node: '\n'.join(textwrap.wrap(node, width=12)) for node in G.nodes()}
+nx.draw_networkx_labels(G, pos, labels=wrapped_labels, font_size=8,
+                        font_color="white", font_weight="bold")
 
 edge_labels = nx.get_edge_attributes(G, "weight")
-nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=9)
 
 from matplotlib.lines import Line2D
 legend_elements = [
@@ -103,10 +107,11 @@ legend_elements = [
     plt.scatter([], [], color="#2c3e50", label="Target (Main Database)", s=100),
     plt.scatter([], [], color="#95a5a6", label="Safe Node", s=100),
 ]
-plt.legend(handles=legend_elements, loc="lower left", fontsize=8)
+plt.legend(handles=legend_elements, loc="lower left", fontsize=9)
 
 plt.axis("off")
 plt.tight_layout()
-plt.savefig("results/network_visualization.png", dpi=150)
+plt.savefig("results/network_visualization.png", dpi=150, bbox_inches="tight")
 plt.show()
+print("\nVisualization saved → results/network_visualization.png")
 print("\nVisualization saved → results/network_visualization.png")

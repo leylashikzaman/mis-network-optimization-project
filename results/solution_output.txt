@@ -2,3 +2,5 @@ CYBERSECURITY ATTACK-PATH ANALYSIS
 =======================================================
 Entry Point : Public Web Server
 Target      : Main Database
+Attack Path : Public Web Server → Phishing Email Gateway → Employee Laptop → Admin Terminal → Main Database
+Total Vulnerability Score : 12
