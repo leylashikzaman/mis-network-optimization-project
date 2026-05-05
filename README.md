@@ -50,7 +50,7 @@ meaning of each modeling decision.
 
 ## 7. Results
 - **Optimal Attack Path:** Public Web Server → Phishing Email Gateway → Employee Laptop → Admin Terminal → Main Database
-- **Total Vulnerability Score:** 8
+- **Total Vulnerability Score:** 12
 - **Visualization:** See `results/network_visualization.png`
 - **Full Output:** See `results/solution_output.txt`
 
